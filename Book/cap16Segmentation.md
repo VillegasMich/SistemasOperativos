@@ -1,0 +1,22 @@
+# Segmentation
+
+- There is a big chunk between the _heap_ and the _stack_
+- The simple base and bounds in not enough
+- **Segmentation** -> Have base and bounds pair per logical **segment**, -> contiguous portion of address space
+- place each code - heap - stack in different HW memory slots
+- **Segmentation fault** when the program tries to access memory slot beyond the limits
+- Uses 2 bits to store the location
+  - 00 -> virtual address in code segment
+  - 01 -> virtual address on the heap
+- The rest of the bits are for the **offset**
+- The offset has to be less than the bounds, otherwise is an illegal address
+- If the address is correct we find the fisical address **Base[Segment] + Offset**
+- Some systems put the code to in the heap, to reduce from 2 bit to 1 to store the location
+- The Stack grows **backwards**
+- The HW needs to know the _growing direction_
+  - 1 -> positive direction
+  - 0 -> negative direction
+- **Sharing** -> Implement to save memory
+- **Protection bits** -> permissions of a programm -> **Read** and **Write** and **Execute**
+- The read only programs are shared to **all** the processes
+- **Segment table** -> Supports the creation of a very large number of segments
